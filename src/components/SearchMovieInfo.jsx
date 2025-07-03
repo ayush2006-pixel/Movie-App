@@ -1,4 +1,4 @@
-// SearchMovieInfo.jsx (Updated)
+// SearchMovieInfo.jsx 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
