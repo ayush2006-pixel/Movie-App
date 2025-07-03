@@ -80,25 +80,29 @@ const SearchMovieInfo = () => {
                         </div>
                     </div>
 
-                    {movie.homepage && (
+                    
                         <a
                             href={"/"}
                             className="inline-block mt-4 px-4 py-2 rounded-lg bg-white/15 text-white hover:bg-white hover:text-black transition ">
                             Visit Homepage →
                         </a>
 
-                    )}
+                   
                 </div>
             </div>
 
             {(() => {
-                if (!movie.videos?.results?.length) return null;
+                if (!movie.videos?.results?.length) {
+                    return <p className="text-center text-gray-400 mt-6">No trailer found :)</p>;
+                }
 
                 const trailers = movie.videos.results.filter(
                     (vid) => vid.site === "YouTube" && vid.type === "Trailer"
                 );
 
-                if (trailers.length === 0) return null;
+                if (trailers.length === 0) {
+                    return <p className="text-center text-gray-400 mt-6">No trailer found :)</p>;
+                }
 
                 const officialTrailer = trailers.find((vid) => vid.official === true);
                 const trailerKey = officialTrailer ? officialTrailer.key : trailers[0].key;
@@ -117,6 +121,7 @@ const SearchMovieInfo = () => {
                     </div>
                 );
             })()}
+
 
         </main>
     );
